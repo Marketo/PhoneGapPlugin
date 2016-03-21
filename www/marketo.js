@@ -18,6 +18,23 @@
  *
 */
 
+var KEY_FIRST_NAME = "firstName";
+var KEY_LAST_NAME = "lastName";
+var KEY_ADDRESS = "address";
+var KEY_CITY = "city";
+var KEY_STATE = "state";
+var KEY_COUNTRY = "country";
+var KEY_POSTAL_CODE = "postalCode";
+var KEY_GENDER = "gender";
+var KEY_EMAIL = "email";
+var KEY_TWITTER = "twitterId";
+var KEY_FACEBOOK = "facebookId";
+var KEY_LINKEDIN = "linkedinId";
+var KEY_LEAD_SOURCE = "leadSource";
+var KEY_BIRTHDAY = "dateOfBirth";
+var KEY_FACEBOOK_PROFILE_URL = "facebookProfileURL";
+var KEY_FACEBOOK_PROFILE_PIC = "facebookPhotoURL";
+
 var marketo = {
   /**
    * Call this method when user wants to initialize marketo application
