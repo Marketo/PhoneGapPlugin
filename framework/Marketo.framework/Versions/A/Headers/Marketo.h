@@ -3,19 +3,18 @@
 //
 // Marketo Mobile Engagement framework
 //
-// Copyright (c) 2007-2015, Marketo, Inc. All rights reserved.
+// Copyright (c) 2007-2016, Marketo, Inc. All rights reserved.
 
 /*!
  * @header Marketo.h
  * @discussion The Marketo class is used to initialize the Marketo SDK.
- * @updated 2015-04-29
  */
 
 #import <Marketo/MKTSecuritySignature.h>
 #import <Marketo/MarketoActionMetaData.h>
 #import <Marketo/MarketoLead.h>
 #import <UIKit/UIKit.h>
-
+#import <UserNotifications/UserNotifications.h>
 @interface Marketo : NSObject
 
 /*!
@@ -71,6 +70,12 @@
 - (void)registerPushDeviceToken:(NSData *)deviceToken;
 
 /*!
+ * This function unregisters a Push Token.
+ * If a Push Token is already registered, call unregisterPushDeviceToken to unregister token.
+ */
+- (void)unregisterPushDeviceToken;
+
+/*!
  * This tracks the push notification by sending an activity.
  * @param userInfo Dictionary containing push payload
  */
@@ -105,6 +110,15 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification;
 
 /*!
+ * Override System's userNotificationCenter method to Operate PushNotification
+ * @param center The UNUserNotificationCenter object supplied by the source app.
+ * @param response UNNotificationResponse object supplied by the source app.
+ * @param completionHandler object supplied by the source app.
+ */
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void(^)())completionHandler;
+/*!
  * Set security Signature for Authentication
  * @param token - The Security Token recived from client server
  */
@@ -127,6 +141,12 @@
  *
  */
 - (NSString *)getDeviceId;
+
+/*!
+ * Force report all data to Server.
+ *
+ */
+- (void)reportAll;
 
 /*!
  * This object should be initialized via shared instance
